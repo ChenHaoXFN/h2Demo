@@ -11,7 +11,8 @@ public class H2demoApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		
+		int x = 10 / 3;
+		System.out.println(( x > 3 ) ? ( x += 3 / 10 ) : ( x -= 3 / 10 ));
 	}
 
 }

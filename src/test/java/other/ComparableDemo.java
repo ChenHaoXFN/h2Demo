@@ -97,14 +97,11 @@ public class ComparableDemo {
   @Test
   public void lambdaTest() {
 
-    String[] players = {"h Martin Del Potro", "g Berdych",
-        "i Gasquet", "d Ferrer",
-        "e Federer", "j Isner",
-        "b Djokovic", "a Waa",
-        "c Wawrinka", "f Murray"};
+    String[] players = {"8888", "2022",
+       "9999"};
 
     // 1.使用匿名内部类进行排序，根据String的名字.
-    Arrays.sort(players, (String o1, String o2) -> {
+    Arrays.sort(players, (o1,o2) -> {
           // 这里是别的代码.
           // code
           System.out.println();
@@ -163,7 +160,7 @@ public class ComparableDemo {
   public void testSort1() {
     Predicate<User> ageFilter = (User user) -> user.getAge() > 20;
 
-    Comparator<User> comparable = (o1, o2) -> o1.getAge().compareTo(o2.getAge());
+    Comparator<User> comparable = Comparator.comparing(User::getAge);
 
     List<User> collect = list.stream().sorted(comparable).filter(ageFilter).limit(3)
         .collect(toList());
@@ -175,12 +172,7 @@ public class ComparableDemo {
    */
   @Test
   public void maxMin() {
-    User min = list.stream().min(new Comparator<User>() {
-      @Override
-      public int compare(User o1, User o2) {
-        return o1.getAge().compareTo(o2.getAge());
-      }
-    }).get();
+    User min = list.stream().min((o1, o2) -> o1.getAge().compareTo(o2.getAge())).get();
     System.out.println(min);
 
     User max = list.stream().max(Comparator.comparing(User::getAge)).get();
@@ -465,7 +457,11 @@ public class ComparableDemo {
 //    IntStream.generate(() -> (int) (System.nanoTime() % 100)).
 //        limit(10).forEach(System.out::println);
 //    Stream.iterate(0,n->n+3).limit(20).forEach(u-> System.out.println(u));
-    Stream.iterate(0, n -> n + 1).limit(10).forEach(u -> System.out.println(u));
+//    Stream.iterate(0, n -> n + 1).limit(10).forEach(u -> System.out.println(u));
+
+//    Stream.iterate(0, n -> n + 1).limit(10000).forEach(u -> System.out.println(u));
+    Stream.iterate(0, n -> n + 3).filter(integer -> integer < 100 && integer > 0)
+        .forEach(i -> System.out.println(i));
   }
 
 
@@ -479,7 +475,7 @@ public class ComparableDemo {
 //    list.stream().collect(Collectors.toMap(obj -> obj.getAge(), obj -> obj));
     Map<Integer, String> map = list.stream()
         .collect(Collectors.toMap(user -> user.getAge(), user -> user.getName()));
-    for(Entry<Integer,String> entry: map.entrySet()){
+    for (Entry<Integer, String> entry : map.entrySet()) {
       System.out.println(entry.getKey());
       System.out.println(entry.getValue());
     }
@@ -495,6 +491,7 @@ public class ComparableDemo {
    */
   @Test
   public void therdTest() {
+
     System.out.println(Integer.MIN_VALUE);
     System.out.println((long) (Integer.MAX_VALUE + 1));
 //    Collections.sort(list, Comparator.comparing(User::getName));

@@ -9,7 +9,9 @@
 	<packaging>jar</packaging>
 
 	<name>h2demo</name>
-	<description>Demo project for Spring Boot</description>
+	<description>JSF - PrimeFaces Example using Spring Boot and Maven</description>
+	<url>https://www.codenotfound.com/jsf-primefaces-example-spring-boot-maven.html</url>
+
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -46,6 +48,13 @@
 			<artifactId>h2</artifactId>
 			<version>1.4.195</version>
 		</dependency>
+
+
+		<dependency>
+			<groupId>org.joinfaces</groupId>
+			<artifactId>primefaces-spring-boot-starter</artifactId>
+		</dependency>
+
 		<!--mybatis-->
 		<!--<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
