@@ -1,6 +1,7 @@
 package com.h2database.h2demo.dao;
 
 import com.h2database.h2demo.domain.User;
+import java.time.LocalDate;
 import java.util.Random;
 import org.junit.Assert;
 import org.junit.Test;
@@ -30,13 +31,11 @@ public class UserRepositoryTest {
   public void addUser() {
     User user;
     long start = System.currentTimeMillis();   //获取开始时间
-    for (int i = 1; i < 100000; i++) {
-      User one = userRepository.findOne(i);
-      Integer id = one.getId();
-      Integer age = one.getAge();
-      Integer num = id*age;
+//      User one = userRepository.findOne(i);
+//      Integer id = one.getId();
+//      Integer age = one.getAge();
+//      Integer num = id*age;
 
-    }
     long end = System.currentTimeMillis(); //获取结束时间
     System.out.println("程序运行时间： " + (end - start) / 1000 + " 秒");
   }
@@ -47,13 +46,14 @@ public class UserRepositoryTest {
 
   @Test
   public void editUser() {
-//    User user = new User();
-//    user.setId(1);
-//    user.setName("李四");
-//    user.setAddress("上海");
-//    user.setAge(20);
-//    user.setCity("上海");
-//    userRepository.save(user);
+    User user = new User();
+    user.setId(1);
+    user.setName("李四");
+    user.setAddress("上海");
+    user.setAge(20);
+    user.setCity("上海");
+    user.setLocalDate(LocalDate.now());
+    userRepository.save(user);
   }
 
   @Test

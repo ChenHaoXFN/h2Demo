@@ -1,6 +1,7 @@
 package com.h2database.h2demo.domain;
 
 import java.sql.Clob;
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,6 +29,7 @@ public class User {
   private String name;
   private String address;
   private String city;
+  private LocalDate localDate;
 
   public User() {
   }
