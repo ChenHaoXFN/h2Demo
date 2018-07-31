@@ -1,6 +1,8 @@
 package other;
 
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -28,21 +30,18 @@ public class LocalDateTimeDemo {
     // 从一个文本字符串 获得 LocalDateTime实例
     LocalDateTime dateTime1 = LocalDateTime.parse(text);
     System.out.println(dateTime1); // 2007-12-03T10:15:30
-    // 传入自定义文本，自定义格式化 构造 LocalDateTime 对象
-    CharSequence text2 = "2012 12 12T11 11 11";
-    DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy MM dd ");
-    LocalDateTime dateTime2 = LocalDateTime.parse(text2, pattern);
 
-    localDateTime.getDayOfMonth();
-    localDateTime.getDayOfWeek();
-    localDateTime.getDayOfYear();
-    localDateTime.getHour();
-    localDateTime.getMonth();
-    localDateTime.getYear();
-
-    System.out.println(LocalDateTime.MAX);
-
-
+    //===============================================================================
+    // 3、获取，年，月，日，时等等
+    //===============================================================================
+    int dayOfMonth = localDateTime.getDayOfMonth();
+    DayOfWeek dayOfWeek = localDateTime.getDayOfWeek();
+    int dayOfYear = localDateTime.getDayOfYear();
+    int hour = localDateTime.getHour();
+    Month month = localDateTime.getMonth();
+    int year = localDateTime.getYear();
+    System.out.println(year + "年" + month.toString() + "月" + dayOfMonth + "日" +
+        hour + "时" + "|||" + dayOfWeek + "|||" + dayOfYear);
+    // 2018年JULY月31日9时|||TUESDAY|||212
   }
-
 }
